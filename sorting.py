@@ -1,5 +1,6 @@
 import os
 import csv
+import numpy
 
 def read_data(file_name):
     """
@@ -21,9 +22,30 @@ def read_data(file_name):
                     data[header].append(int(value))
 
     return data
+
+def selection_sort(number_array, direction="ascending"):
+    sorted_array = []
+    i = 0
+    while i < len(number_array):
+        if direction == "ascending":
+            sorted_array.insert(i,max(number_array))
+            number_array.remove(max(number_array))
+        elif direction == "descending":
+            sorted_array.insert(i,min(number_array))
+            number_array.remove(min(number_array))
+        else:
+            print("chyba")
+
+    return sorted_array
+
 def main():
     data = read_data("numbers.csv")
     print(data)
+
+    my_array = [4,5,7,6,8]
+    print(selection_sort(data["series_1"]))
+    print(selection_sort(data["series_2"],"descending"))
+    print(selection_sort(data["series_3"]))
     pass
 
 
