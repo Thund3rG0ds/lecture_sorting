@@ -38,14 +38,42 @@ def selection_sort(number_array, direction="ascending"):
 
     return sorted_array
 
+def bubble_sort(number_array):
+    medium_list = []
+    i = 0
+    while i + 1 < len(number_array):
+        if number_array[i] > number_array[i+1]:
+            medium_list = [number_array[i]]
+            number_array[i] = number_array[i+1]
+            number_array[i + 1] = medium_list[0]
+            medium_list = []
+            i += 1
+        else:
+            i += 1
+    return number_array
+
+def insertion_sort(number_array):
+    j = 0
+    for i in range(len(number_array)):
+        while i+1 < len(number_array):
+            if number_array[i] > number_array[i+1]:
+                number_array[i], number_array[i+1] = number_array[i+1],number_array[i]
+                if i > 0:
+                    i -= 1
+            else:
+                j += 1
+                i = j
+
+    return number_array
+
 def main():
     data = read_data("numbers.csv")
     print(data)
 
-    my_array = [4,5,7,6,8]
-    print(selection_sort(data["series_1"]))
-    print(selection_sort(data["series_2"],"descending"))
-    print(selection_sort(data["series_3"]))
+    print(insertion_sort(data["series_2"]))
+    #print(selection_sort(data["series_1"]))
+    #print(selection_sort(data["series_2"],"descending"))
+    #print(selection_sort(data["series_3"]))
     pass
 
 
